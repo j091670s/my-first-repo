@@ -29,7 +29,7 @@ class dynamicArray:
             self.capacity += 1
             self.data[-1] = element_1
         else :
-            self.data = element_1
+            self.data[self.size] = element_1
             self.size += 1
             
             
