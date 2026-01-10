@@ -22,7 +22,7 @@ class dynamicArray:
     
     # print the array
     def print_dArray(self):
-        print(self.data)
+        print(self.data[0:self.size])
     #################################################################################################
     
     # append element to the end of the array
@@ -30,15 +30,22 @@ class dynamicArray:
         current_Size = self.give_Size()
         
         if(current_Size >= self.capacity):
-            print("\nThe current size:", current_Size, " exceeds the capacity:", self.capacity, ".Resizing by one")
-            self.capacity +=1
-            self.size+=1
-            new_Array = self
-            new_Array.size = self.size
-            new_Array.data = self.data[:]
-            new_Array.data[-1] = element_1
+            
+            print("\nThe current size:", current_Size, " exceeds the capacity:", self.capacity, ".Resizing")
+            new_Capacity = self.capacity * 2
+            new_Array = [None] * new_Capacity
+            for i in range(current_Size):
+                new_Array[i] = self.data[i]
+            
+            new_Array[current_Size] = element_1
+            self.data = new_Array
+            self.size +=1
+            self.capacity = new_Capacity
+            
             print ("New size is: ", self.size)
+            print("size, capacity:", self.size, self.capacity)
         else :
+            
             print("\nCurrent size:", self.size,". Current capacity:", self.capacity)
             self.data[current_Size] = element_1
             self.size += 1
