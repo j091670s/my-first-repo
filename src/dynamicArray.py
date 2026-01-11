@@ -54,3 +54,95 @@ class dynamicArray:
     #################################################################################################
             
     # insert is next, then remove, get, and set
+    def insert_Element(self, element, array_Index):
+        current_Size = self.give_Size()
+
+        if array_Index < 0 or array_Index > current_Size:
+            print("Invalid index.")
+            return
+        if array_Index == self.size: #appending 
+            
+            if current_Size == self.capacity:
+                new_Capacity = self.capacity * 2
+                new_Array = [None] * new_Capacity
+                for i in range(current_Size):
+                    new_Array[i] = self.data[i]
+            
+                new_Array[current_Size] = element
+                self.data = new_Array
+                self.size +=1
+                self.capacity = new_Capacity
+                
+            else:
+                
+                self.data[array_Index] = element
+                self.size+=1
+                
+        elif array_Index == 0:
+            
+            current_Capacity = self.capacity
+            
+            if current_Size == current_Capacity:
+                new_Capacity = self.capacity * 2
+                new_Array = [None] * new_Capacity
+                for i in range(current_Size):
+                    new_Array[i] = self.data[i]
+                    
+                for i in range(current_Size - 1, array_Index - 1, -1):
+                    new_Array[i + 1] = self.data[i]
+            
+                new_Array[array_Index] = element
+                self.data = new_Array
+                self.size +=1
+                self.capacity = new_Capacity
+                    
+            else:      
+                new_Array = [None] * current_Capacity
+                for i in range(current_Size):
+                    new_Array[i] = self.data[i] 
+                     
+                for i in range(current_Size - 1, array_Index - 1, -1):
+                    new_Array[i + 1] = self.data[i]
+            
+                new_Array[array_Index] = element
+                self.data = new_Array
+                self.size +=1
+                #self.capacity = new_Capacity
+                
+        else :
+            current_Capacity = self.capacity
+            if current_Size ==  current_Capacity:
+                new_Capacity = self.capacity * 2
+                new_Array = [None] * new_Capacity
+                for i in range(current_Size):
+                    new_Array[i] = self.data[i]
+            
+                for i in range(current_Size - 1, array_Index - 1, -1):
+                    new_Array[i + 1] = new_Array[i]
+                    
+                new_Array[array_Index] = element
+                self.data = new_Array
+                self.size+=1
+                self.capacity = new_Capacity
+            else:
+                
+                new_Array = [None] * current_Capacity
+                for i in range(current_Size):
+                    new_Array[i] = self.data[i]
+                    
+                for i in range(current_Size - 1, array_Index - 1, -1):
+                    new_Array[i + 1] = new_Array[i]
+                    
+                new_Array[array_Index] = element
+                self.data = new_Array
+                self.size+=1
+                #self.capacity = new_Capacity
+                
+                
+        self.print_dArray()
+                
+                
+                #new_Array[current_Size] = element
+                #self.data = new_Array
+                #self.size +=1
+                #self.capacity = new_Capacity
