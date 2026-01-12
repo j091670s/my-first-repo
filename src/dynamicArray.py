@@ -25,17 +25,26 @@ class dynamicArray:
         print(self.data[0:self.size])
     #################################################################################################
     
+    # resize helper function
+    def resize_Array(self, curr_Size):
+        new_Capacity = self.capacity * 2
+        new_Array = [None] * new_Capacity
+        for i in range(curr_Size):
+            new_Array[i] = self.data[i]
+        return new_Array, new_Capacity
+    
     # append element to the end of the array
     def append_Element (self, element_1):
         current_Size = self.give_Size()
         
         if(current_Size >= self.capacity):
             
-            print("\nThe current size:", current_Size, " exceeds the capacity:", self.capacity, ".Resizing")
-            new_Capacity = self.capacity * 2
-            new_Array = [None] * new_Capacity
-            for i in range(current_Size):
-                new_Array[i] = self.data[i]
+            print("\nThe current size:", current_Size, "is at capacity:", self.capacity, ". Resizing")
+            new_Array, new_Capacity= self.resize_Array(current_Size)
+            #new_Capacity = self.capacity * 2
+            #new_Array = [None] * new_Capacity
+            #for i in range(current_Size):
+                #new_Array[i] = self.data[i]
             
             new_Array[current_Size] = element_1
             self.data = new_Array
@@ -63,10 +72,11 @@ class dynamicArray:
         if array_Index == self.size: #appending 
             
             if current_Size == self.capacity:
-                new_Capacity = self.capacity * 2
-                new_Array = [None] * new_Capacity
-                for i in range(current_Size):
-                    new_Array[i] = self.data[i]
+                new_Array, new_Capacity = self.resize_Array(current_Size)
+                #new_Capacity = self.capacity * 2
+                #new_Array = [None] * new_Capacity
+                #for i in range(current_Size):
+                    #new_Array[i] = self.data[i]
             
                 new_Array[current_Size] = element
                 self.data = new_Array
@@ -83,10 +93,11 @@ class dynamicArray:
             current_Capacity = self.capacity
             
             if current_Size == current_Capacity:
-                new_Capacity = self.capacity * 2
-                new_Array = [None] * new_Capacity
-                for i in range(current_Size):
-                    new_Array[i] = self.data[i]
+                new_Array,new_Capacity = self.resize_Array(current_Size)
+                #new_Capacity = self.capacity * 2
+                #new_Array = [None] * new_Capacity
+                #for i in range(current_Size):
+                    #new_Array[i] = self.data[i]
                     
                 for i in range(current_Size - 1, array_Index - 1, -1):
                     new_Array[i + 1] = self.data[i]
@@ -107,15 +118,15 @@ class dynamicArray:
                 new_Array[array_Index] = element
                 self.data = new_Array
                 self.size +=1
-                #self.capacity = new_Capacity
                 
         else :
             current_Capacity = self.capacity
             if current_Size ==  current_Capacity:
-                new_Capacity = self.capacity * 2
-                new_Array = [None] * new_Capacity
-                for i in range(current_Size):
-                    new_Array[i] = self.data[i]
+                new_Array, new_Capacity = self.resize_Array(current_Size)
+                #new_Capacity = self.capacity * 2
+                #new_Array = [None] * new_Capacity
+                #for i in range(current_Size):
+                    #new_Array[i] = self.data[i]
             
                 for i in range(current_Size - 1, array_Index - 1, -1):
                     new_Array[i + 1] = new_Array[i]
@@ -136,13 +147,7 @@ class dynamicArray:
                 new_Array[array_Index] = element
                 self.data = new_Array
                 self.size+=1
-                #self.capacity = new_Capacity
                 
                 
         self.print_dArray()
                 
-                
-                #new_Array[current_Size] = element
-                #self.data = new_Array
-                #self.size +=1
-                #self.capacity = new_Capacity
