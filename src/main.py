@@ -18,6 +18,9 @@ currentSize = my_dynamic_Array.give_Size()
 my_dynamic_Array.insert_Element(4,currentSize)
 my_dynamic_Array.insert_Element(4,my_dynamic_Array.give_Size() + 1)
 my_dynamic_Array.insert_Element(4,-1)
+my_dynamic_Array.remove_Here(1)
+my_dynamic_Array.print_dArray()
+
 
 
 
