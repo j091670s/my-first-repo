@@ -86,7 +86,7 @@ class dynamicArray:
     def insert_Element(self, element, index):
         if index < 0 or index > self.size:
             print("Invalid index.")
-            return
+            return 
 
         if self.size == self.capacity:
             new_Array, new_Capacity = self.resize_Array(self.size)
