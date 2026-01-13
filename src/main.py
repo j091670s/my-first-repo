@@ -20,6 +20,9 @@ my_dynamic_Array.insert_Element(4,my_dynamic_Array.give_Size() + 1)
 my_dynamic_Array.insert_Element(4,-1)
 my_dynamic_Array.remove_Here(1)
 my_dynamic_Array.print_dArray()
+value = my_dynamic_Array.get_Element(2)
+my_dynamic_Array.my_Set(0,67)
+my_dynamic_Array.print_dArray()
 
 
 
